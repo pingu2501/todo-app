@@ -2,31 +2,14 @@ import { createStore } from "vuex";
 import Localbase from "localbase";
 
 let db = new Localbase("db");
-db.config.debug = false
+db.config.debug = false;
 
 export default createStore({
   state: {
-    appTitle: process.env.VUE_APP_TITLE,
+    //env process.env.VUE_APP_TITLE
+    appTitle: "Vuetify Todo",
     search: null,
-    tasks: [
-      // {
-      //   id: 1,
-      //   title: "wakeup",
-      //   done: false,
-      //   dueDate: "2023-5-5",
-      // },
-      // {
-      //   id: 2,
-      //   title: "have sex",
-      //   done: false,
-      //   dueDate: "2023-10-5",
-      // },
-      // {
-      //   id: 3,
-      //   title: "sleep",
-      //   done: false,
-      // },
-    ],
+    tasks: [],
     snackbar: {
       show: false,
       text: "",
