@@ -37,10 +37,10 @@
     </v-navigation-drawer>
 
     <v-app-bar
-      color="teal-darken-4"
-      image="https://picsum.photos/1920/1080?random"
+      :class="$route.path == '/' ? 'app-bar' : 'app-bar-about'"
+      image="https://galenlovenauthor.files.wordpress.com/2014/12/distance-blue-clouds-mountains-perspective-2538592-480x320.jpg"
       density="prominent"
-      height="170"
+      :height="$route.path == '/' ? '210' : '170'"
     >
       <v-img
         gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
@@ -48,22 +48,28 @@
 
       <v-container class="header-container pa-6">
         <v-row>
-          <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+          <v-app-bar-nav-icon
+            @click="drawer = !drawer"
+            color="#ffffff"
+          ></v-app-bar-nav-icon>
           <v-spacer></v-spacer>
           <search />
         </v-row>
         <v-row class="mt-8">
-          <v-app-bar-title class="text-h4 ml-4">{{
+          <v-app-bar-title class="text-h4 ml-4 white--text">{{
             $store.state.appTitle
           }}</v-app-bar-title>
         </v-row>
         <v-row class="mt-1">
           <live-date-time />
         </v-row>
+        <v-row v-if="$route.path === '/'">
+          <field-add-task />
+        </v-row>
       </v-container>
     </v-app-bar>
 
-    <v-main class="main">
+    <v-main :class="$route.path === '/' ? 'main' : 'main-about'">
       <router-view></router-view>
       <snack-bar />
     </v-main>
@@ -86,11 +92,13 @@ export default {
     ],
   }),
   mounted() {
+    console.log(this.$route);
     this.$store.dispatch("getTasks");
   },
   components: {
     search: require("@/components/Tools/Search.vue").default,
     "live-date-time": require("@/components/Tools/LiveDateTime.vue").default,
+    "field-add-task": require("@/components/Todos/FieldAddTask.vue").default,
     "snack-bar": require("@/components/Shared/SnackBar.vue").default,
   },
 };
@@ -98,13 +106,23 @@ export default {
 
 <style lang="scss">
 .main {
+  --v-layout-top: 210px !important;
+}
+.main-about {
   --v-layout-top: 170px !important;
 }
-.v-toolbar__content {
-  height: 170px !important;
+.app-bar {
+  .v-toolbar__content {
+    height: 210px !important;
+  }
+}
+.app-bar-about {
+  .v-toolbar__content {
+    height: 170px !important;
+  }
 }
 .white--text {
-  color: white;
+  color: white !important;
 }
 .header-container {
   max-width: none !important;

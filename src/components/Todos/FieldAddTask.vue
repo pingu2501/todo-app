@@ -1,8 +1,8 @@
 <template>
   <v-text-field
     v-model="newTaskTitle"
-    class="pa-3"
-    label="Add Task"
+    class="pa-3 white"
+    placeholder="Add Task"
     variant="outlined"
     hide-details
     clearable
@@ -10,7 +10,7 @@
     @keyup.enter="addTask"
   >
     <template v-slot:append-inner>
-      <v-icon color="blue-darken-2" @click="addTask" :disabled="invalidTaskInput">
+      <v-icon color="white" @click="addTask" :disabled="invalidTaskInput">
         mdi-plus</v-icon
       >
     </template>
@@ -40,4 +40,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.white {
+  color: white !important;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="text-caption ml-5">{{ date }}</div>
+  <div class="text-caption ml-5 white">{{ date }}</div>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
   methods: {
     getDate() {
       this.date = moment().format("MMMM D, h:mm:ss a");
-      setTimeout(this.getDate , 1000)
+      setTimeout(this.getDate, 1000);
     },
   },
   mounted() {
@@ -22,4 +22,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.white {
+  color: white !important;
+}
+</style>

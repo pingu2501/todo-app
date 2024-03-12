@@ -11,6 +11,7 @@
     class="expanding-search pa-2"
     :class="{ closed: searchClosed && !$store.state.search }"
     hide-details
+    :disabled="$store.state.sortable"
   ></v-text-field>
 </template>
 
@@ -32,6 +33,9 @@ export default {
     &::after {
       border-color: transparent !important;
     }
+  }
+  i.mdi-magnify.mdi.v-icon.notranslate.v-theme--light.v-icon--size-default {
+    color: white !important;
   }
 }
 

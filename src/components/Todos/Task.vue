@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .text-subtitle-1 {
   font-size: 0.5rem !important;
 }
@@ -68,7 +68,12 @@ export default {
 .sortable-drag {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-.blue{
-    background-color: #0085ff4d;
+.blue {
+  background-color: #0085ff4d;
+}
+.drag-button {
+  i {
+    color: #002fff !important;
+  }
 }
 </style>
